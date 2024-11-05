@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentiment Analysis</title>
+    <style>
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #2e1b47, #1e2a47); /* Dark purple to dark blue gradient */
+        color: #e0e0e0; /* Light gray text */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        padding: 40px;
+        border-radius: 12px;
+        text-align: center;
+        width: 90%;
+        max-width: 600px;
+        transition: all 0.3s ease;
+      }
+
+      .container:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        transform: translateY(-5px);
+      }
+
+      h1 {
+        color: white; /* Soft light purple */
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      /* Form Styling */
+      .sentiment-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 2px solid #d1c4e9; /* Soft light purple border */
+        border-radius: 8px;
+        font-size: 16px;
+        resize: none;
+        outline: none;
+        background-color: #333; /* Dark background */
+        color: #fff;
+        transition: all 0.3s ease;
+      }
+
+      textarea:focus {
+        border-color: #ab47bc; /* Lighter purple for focus */
+        box-shadow: 0 0 5px rgba(171, 71, 188, 0.5);
+      }
+
+      button {
+        background-color: #ab47bc; /* Light purple for the button */
+        color: #ffffff;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #9c27b0; /* Darker purple when hovered */
+      }
+
+      button:active {
+        transform: scale(0.98);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          padding: 20px;
+          width: 90%;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        textarea {
+          font-size: 14px;
+        }
+
+        button {
+          font-size: 16px;
+          padding: 10px 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 15px;
+          width: 90%;
+        }
+
+        h1 {
+          font-size: 1.4rem;
+        }
+
+        textarea {
+          font-size: 14px;
+          padding: 10px;
+        }
+
+        button {
+          font-size: 15px;
+          padding: 8px 18px;
+        }
+      }
+
+      /* Result Styling */
+      .result {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #90caf9; /* Light blue background */
+        border-radius: 6px;
+        font-size: 18px;
+        display: none; /* Hidden by default until the result is displayed */
+      }
+
+      /* Polymorphism: Success / Error Messages */
+      .result.success {
+        background-color: #a5d6a7; /* Soft green background for success */
+        color: #388e3c; /* Dark green for success */
+      }
+
+      .result.error {
+        background-color: #ef9a9a; /* Soft red background for error */
+        color: #d32f2f; /* Dark red for error */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Amazon Cellphone Review Sentiment Analysis</h1>
+      <form action="/predict" method="POST" class="sentiment-form">
+        <textarea
+          name="review"
+          rows="4"
+          cols="50"
+          placeholder="Enter review here..."
+        ></textarea
+        ><br />
+        <button type="submit">Predict Sentiment</button>
+      </form>
+      <div class="result">
+        <!-- The sentiment result will be displayed here -->
+      </div>
+    </div>
+  </body>
+</html>
